@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import moment from 'moment'
 
 const App = () => {
+	// links, visits - everything is global in this component (❁´◡`❁)
 	const [ links, setLinks ] = useState([])
 	const [ showLinkVisits, setShowLinkVisits ] = useState(-1)
 	const [ visits, setVisits ] = useState([])
@@ -18,6 +19,7 @@ const App = () => {
 	}, [])
 
 	useEffect(() => {
+		// if a link is clicked we fetch the visits
 		if (showLinkVisits !== -1) {
 			const link = links.find(l => l.id === showLinkVisits)
 			if (link) {
@@ -46,6 +48,7 @@ const App = () => {
 			.catch(error => alert('Error creating link:', error))
 	}
 	
+	// show all the links unless we clicked one, if one is clicked we show visits
 	if (showLinkVisits !== -1) {
 		return (
 			<>
